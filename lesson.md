@@ -65,6 +65,8 @@ Replace `<column_name>` with `*` to select all columns from a table:
 SELECT * FROM resale_flat_prices_2017;
 ```
 
+> Select any 3 columns from the table.
+
 ### Operators and functions
 
 Operators and functions are used to perform operations on data. They are used in the `SELECT` statement. The result of the operation is returned as a new column.
@@ -143,6 +145,14 @@ Example:
 SELECT * FROM resale_flat_prices_2017 WHERE town = 'BUKIT MERAH';
 ```
 
+We can introduce line breaks (new lines) to make the query more readable:
+
+```sql
+SELECT *
+FROM resale_flat_prices_2017
+WHERE town = 'BUKIT MERAH';
+```
+
 > Select flats with floor area greater than 100 sqm
 >
 > Select flats with resale price between 400,000 and 500,000
@@ -166,7 +176,9 @@ SELECT * FROM resale_flat_prices_2017 ORDER BY resale_price DESC;
 Return flats with the most recent lease commence date and highest to lowest resale price:
 
 ```sql
-SELECT * FROM resale_flat_prices_2017 ORDER BY lease_commence_date DESC, resale_price DESC;
+SELECT *
+FROM resale_flat_prices_2017
+ORDER BY lease_commence_date DESC, resale_price DESC;
 ```
 
 > Select flats from highest to lowest resale price in Punggol
@@ -210,25 +222,34 @@ The `GROUP BY` clause is used to group rows that have the same values into summa
 Average resale price of flats in each town:
 
 ```sql
-SELECT town, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY town;
+SELECT town, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY town;
 ```
 
 You can also group by multiple columns:
 
 ```sql
-SELECT town, lease_commence_date, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY town, lease_commence_date;
+SELECT town, lease_commence_date, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY town, lease_commence_date;
 ```
 
 You can replace the `town, lease_commence_date` after the `GROUP BY` with `1, 2` to group by the first and second columns:
 
 ```sql
-SELECT town, lease_commence_date, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY 1, 2;
+SELECT town, lease_commence_date, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY 1, 2;
 ```
 
 Combined with sorting:
 
 ```sql
-SELECT town, lease_commence_date, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY town, lease_commence_date ORDER BY town, lease_commence_date DESC;
+SELECT town, lease_commence_date, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY town, lease_commence_date
+ORDER BY town, lease_commence_date DESC;
 ```
 
 > Select the average resale price by flat type
@@ -244,17 +265,26 @@ The `HAVING` clause is used to filter groups in a `GROUP BY` clause. It is simil
 Average resale price of flats in each town with average resale price greater than 500,000:
 
 ```sql
-SELECT town, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY town HAVING AVG(resale_price) > 500000;
+SELECT town, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY town
+HAVING AVG(resale_price) > 500000;
 ```
 
 Difference between `WHERE` and `HAVING`:
 
 ```sql
-SELECT town, AVG(resale_price) FROM resale_flat_prices_2017 WHERE resale_price > 500000 GROUP BY town;
+SELECT town, AVG(resale_price)
+FROM resale_flat_prices_2017
+WHERE resale_price > 500000
+GROUP BY town;
 ```
 
 ```sql
-SELECT town, AVG(resale_price) FROM resale_flat_prices_2017 GROUP BY town HAVING AVG(resale_price) > 500000;
+SELECT town, AVG(resale_price)
+FROM resale_flat_prices_2017
+GROUP BY town
+HAVING AVG(resale_price) > 500000;
 ```
 
 `HAVING` can only be used on columns that appear in the `SELECT` clause or columns that are used in aggregate functions.
@@ -302,13 +332,17 @@ SELECT DISTINCT town FROM resale_flat_prices_2017;
 The `CASE` expression is used to evaluate a list of conditions and return a value. It is similar to the `IF` statement in programming languages. It starts with the `CASE` keyword followed by the `WHEN` keyword and ends with the `END` keyword.
 
 ```sql
-SELECT town, resale_price, CASE WHEN resale_price > 500000 THEN 'High' ELSE 'Low' END AS price_level FROM resale_flat_prices_2017;
+SELECT town, resale_price,
+CASE WHEN resale_price > 500000 THEN 'High' ELSE 'Low' END AS price_level
+FROM resale_flat_prices_2017;
 ```
 
 You can also use multiple `WHEN` clauses:
 
 ```sql
-SELECT town, resale_price, CASE WHEN resale_price > 1000000 THEN 'High' WHEN resale_price > 500000 THEN 'Medium' ELSE 'Low' END AS price_level FROM resale_flat_prices_2017;
+SELECT town, resale_price,
+CASE WHEN resale_price > 1000000 THEN 'High' WHEN resale_price > 500000 THEN 'Medium' ELSE 'Low' END AS price_level
+FROM resale_flat_prices_2017;
 ```
 
 > Return the records with a new column `flat_size` with values `Small` if flat type is `1-3 ROOM`, `Medium` if flat type is `4 ROOM` and `Large` if flat type is `5 ROOM`, `EXECUTIVE` or `MULTI-GENERATION`
