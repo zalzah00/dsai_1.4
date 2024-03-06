@@ -55,7 +55,6 @@
 - B. UPPER()
 - C. LENGTH()
 - D. TRIM()
--
 
 ### Q9: What does the <> operator do in SQL?
 
@@ -66,7 +65,7 @@
 
 ### Q10: How can you rename a column in SQL?
 
--A. Using the RENAME keyword.
--B. Using the AS keyword.
--C. Using the ALIAS keyword.
--D. Using the NAME keyword.
+- A. Using the RENAME keyword.
+- B. Using the AS keyword.
+- C. Using the ALIAS keyword.
+- D. Using the NAME keyword.
