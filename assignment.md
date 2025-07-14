@@ -26,7 +26,7 @@ Select the average price per sqm for flats in each town.
 
 ```sql
 SELECT
-	town, AVG(resale_price / floor_area_sqm) AS price_per_sqm,
+	town, AVG(resale_price / floor_area_sqm) AS price_per_sqm
 FROM
     resale_flat_prices_2017
 GROUP BY town;
@@ -53,8 +53,8 @@ FROM
     resale_flat_prices_2017
 GROUP BY
     price_category
-ORDER BY
-	price_category;
+ORDER BY 
+    number_of_flats DESC; -- correction
 ```
 
 ### Question 4
