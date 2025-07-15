@@ -1,5 +1,5 @@
 # Lesson
-
+ "Some French Waiters Grow Healthy Oranges" helps remember the order of SQL clauses: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY.
 ## Brief
 
 ### Lesson Overview
